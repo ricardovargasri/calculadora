@@ -1,4 +1,56 @@
+let items = document.querySelectorAll('.item');
+let operators = document.querySelectorAll('.operadores');
+let screen = document.querySelector('.display');
+let firstNumberDisplay = document.querySelector('.firstNumber');
+let lastNumberDisplay = document.querySelector('.lasstNumber');
 
+//variables
+let operator = '';
+let firstNumber = '';
+let lasstNumber = '';
+
+//y si todos fuera items con su respectiva subclase? estableciendo sus
+//respectivos if, eslse if sea que se le de click a uno u otro?
+items.forEach((item) =>{
+  
+
+  item.addEventListener('click', ()=>{
+    if(item.classList.contains('operadores')){
+      if(firstNumber.length === 0){
+        alert('no puedes empezar con un operador')
+        window.location.reload();
+    }
+    else{
+      firstNumber += item.innerHTML;
+      firstNumberDisplay.innerHTML = firstNumber;
+    }
+  }
+  else{
+    firstNumber += item.innerHTML;
+    firstNumberDisplay.innerHTML = firstNumber;
+  }
+   
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
 document.addEventListener('DOMContentLoaded', function() {
   //TECLAS DE LA CALCULADORA
 
@@ -39,5 +91,5 @@ document.addEventListener('DOMContentLoaded', function() {
   ocho.addEventListener('click', ()=> display.textContent = display.textContent + ocho.innerHTML);
   nueve.addEventListener('click', ()=> display.textContent = display.textContent + nueve.innerHTML);
   cero.addEventListener('click', ()=> display.textContent = display.textContent + cero.innerHTML);
-});
+}); */
   
