@@ -2,6 +2,7 @@ let items = document.querySelectorAll('.item');
 let operators = document.querySelectorAll('.operadores');
 let screen = document.querySelector('.display');
 let firstNumberDisplay = document.querySelector('.firstNumber');
+let sign = document.querySelector('.sign');
 let lastNumberDisplay = document.querySelector('.lasstNumber');
 let especials = document.querySelectorAll('.especiales');
 let arraiser = document.querySelector('#delete');
@@ -37,6 +38,7 @@ items.forEach((item) =>{
 }
 );
 
+//Borrar numeros del primer operando
 arraiser.addEventListener('click', () =>{
   let currentContent = firstNumberDisplay.innerHTML;
 
@@ -44,4 +46,17 @@ arraiser.addEventListener('click', () =>{
     let newContent = currentContent.slice(0, -1);
     firstNumberDisplay.innerHTML = newContent;
   };
-}); 
+});
+
+
+//setiar numeros del segundo operando
+
+
+
+operators.forEach((operator) => {
+  operator.addEventListener('click', ()=>{
+    sign.innerHTML = operator.textContent;
+    setOperator = false
+  })
+})
+

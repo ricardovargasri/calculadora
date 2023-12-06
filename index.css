@@ -14,7 +14,7 @@ body{
   grid-template-columns: repeat(4, 1fr);
   box-sizing: border-box;
 }
- .item{
+.operadores, .especiales, .item{
   box-sizing: border-box;
   background-color: rgb(232, 232, 232);
   padding: 5px;
@@ -22,14 +22,7 @@ body{
   border-radius: 10px;
   margin: 2px;
 }
-.especiales{
-  box-sizing: border-box;
-  background-color: rgb(232, 232, 232);
-  padding: 5px;
-  height: auto;
-  border-radius: 10px;
-  margin: 2px;
-}
+
 .display{
   background-color: rgb(232, 232, 232);
   grid-column: 1 / -1;
