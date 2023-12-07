@@ -3,14 +3,14 @@ let operators = document.querySelectorAll('.operadores');
 let screen = document.querySelector('.display');
 let firstNumberDisplay = document.querySelector('.firstNumber');
 let sign = document.querySelector('.sign');
-let lastNumberDisplay = document.querySelector('.lasstNumber');
+let lastNumberDisplay = document.querySelector('.lastNumber');
 let especials = document.querySelectorAll('.especiales');
 let arraiser = document.querySelector('#delete');
 
 //variables
 let operator = '';
 let firstNumber = '';
-let lasstNumber = '';
+let lastNumber = '';
 let setOperator = true;
 
 
@@ -29,34 +29,44 @@ items.forEach((item) =>{
       firstNumberDisplay.innerHTML = firstNumber;
     }
   }
-  else{
-    firstNumber += item.innerHTML;
-    firstNumberDisplay.innerHTML = firstNumber;
-  }
-
+    else if(setOperator){
+      firstNumber += item.innerHTML;
+      firstNumberDisplay.innerHTML = firstNumber;
+    }
+    else{
+      lastNumber += item.innerHTML;
+      lastNumberDisplay.innerHTML = lastNumber
+    }
   });
 }
 );
 
 //Borrar numeros del primer operando
 arraiser.addEventListener('click', () =>{
-  let currentContent = firstNumberDisplay.innerHTML;
+  if(setOperator){
+    let currentContent = firstNumberDisplay.innerHTML;
+    if(currentContent.length > 0){
+      let newContent = currentContent.slice(0, -1);
+      firstNumberDisplay.innerHTML = newContent;
+    };
+  }
 
-  if(currentContent.length > 0){
-    let newContent = currentContent.slice(0, -1);
-    firstNumberDisplay.innerHTML = newContent;
+  else{
+    let currentContent = lastNumberDisplay.innerHTML;
+    if(currentContent.length > 0){
+      let newContent = currentContent.slice(0, -1);
+      lastNumberDisplay.innerHTML = newContent;
+  }
   };
 });
 
+ operators.forEach((operator) => {
 
-//setiar numeros del segundo operando
-
-
-
-operators.forEach((operator) => {
   operator.addEventListener('click', ()=>{
     sign.innerHTML = operator.textContent;
     setOperator = false
-  })
-})
+  }
+);
+  });     
+
 
