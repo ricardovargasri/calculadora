@@ -28,20 +28,19 @@ function handleOperator(operator){
 
 operators.forEach(operator => operator.addEventListener('click', ()=> handleOperator(operator.innerHTML)))
 
-items.forEach(item => item.addEventListener('click', ()=>{
-   if(setOperator == false){
-    firstNumber += item.innerHTML;
-    console.log(firstNumber.length);
+function handleNumber(item){
+  if(setOperator === false){
+    firstNumber += item
     firstNumberDisplay.innerHTML = firstNumber;
     }
     else{
-      lastNumber += item.innerHTML;
+      lastNumber += item;
       lastNumberDisplay.innerHTML = lastNumber;
-      
     }
-  
-}) 
-);
+}
+items.forEach(item => item.addEventListener('click', ()=> handleNumber(item.innerHTML)))
+
+
  
 
 
