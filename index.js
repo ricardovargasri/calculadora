@@ -8,65 +8,40 @@ let especials = document.querySelectorAll('.especiales');
 let arraiser = document.querySelector('#delete');
 
 //variables
-let operator = '';
+let simbolo = '';
 let firstNumber = '';
 let lastNumber = '';
-let setOperator = true;
+let setOperator = false;
 
-
-
-items.forEach((item) =>{
-  
-
-  item.addEventListener('click', ()=>{
-    if(item.classList.contains('operadores')){
-      if(firstNumber.length === 0){
-        alert('no puedes empezar con un operador')
-        window.location.reload();
-    }
-    else{
-      firstNumber += item.innerHTML;
-      firstNumberDisplay.innerHTML = firstNumber;
-    }
+function handleOperator(operator){
+  if(firstNumber.length === 0){
+    alert('no puedes iniciar con un simbolo')
+    window.location.reload();
   }
-    else if(setOperator){
-      firstNumber += item.innerHTML;
-      firstNumberDisplay.innerHTML = firstNumber;
+  else if(!setOperator){
+   setOperator = true;
+   simbolo += operator;
+   sign.innerHTML = simbolo;
+    operators.forEach(op => op.removeEventListener('click'));
+  }; 
+}
+
+operators.forEach(operator => operator.addEventListener('click', ()=> handleOperator(operator.innerHTML)))
+
+items.forEach(item => item.addEventListener('click', ()=>{
+   if(setOperator == false){
+    firstNumber += item.innerHTML;
+    console.log(firstNumber.length);
+    firstNumberDisplay.innerHTML = firstNumber;
     }
     else{
       lastNumber += item.innerHTML;
-      lastNumberDisplay.innerHTML = lastNumber
+      lastNumberDisplay.innerHTML = lastNumber;
+      
     }
-  });
-}
+  
+}) 
 );
-
-//Borrar numeros del primer operando
-arraiser.addEventListener('click', () =>{
-  if(setOperator){
-    let currentContent = firstNumberDisplay.innerHTML;
-    if(currentContent.length > 0){
-      let newContent = currentContent.slice(0, -1);
-      firstNumberDisplay.innerHTML = newContent;
-    };
-  }
-
-  else{
-    let currentContent = lastNumberDisplay.innerHTML;
-    if(currentContent.length > 0){
-      let newContent = currentContent.slice(0, -1);
-      lastNumberDisplay.innerHTML = newContent;
-  }
-  };
-});
-
- operators.forEach((operator) => {
-
-  operator.addEventListener('click', ()=>{
-    sign.innerHTML = operator.textContent;
-    setOperator = false
-  }
-);
-  });     
+ 
 
 
