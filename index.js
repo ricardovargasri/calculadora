@@ -6,6 +6,7 @@ let sign = document.querySelector('.sign');
 let lastNumberDisplay = document.querySelector('.lastNumber');
 let especials = document.querySelectorAll('.especiales');
 let arraiser = document.querySelector('#delete');
+let igual = document.querySelector('#equals');
 
 //variables
 let simbolo = '';
@@ -22,7 +23,6 @@ function handleOperator(operator){
    setOperator = true;
    simbolo += operator;
    sign.innerHTML = simbolo;
-    operators.forEach(op => op.removeEventListener('click'));
   }; 
 }
 
@@ -36,6 +36,33 @@ function handleNumber(item){
     else{
       lastNumber += item;
       lastNumberDisplay.innerHTML = lastNumber;
+      console.log(firstNumber)
+      console.log(typeof(simbolo));
+      console.log(lastNumber);
+      igual.addEventListener('click', ()=>{
+        if(simbolo === '+'){
+          sign.innerHTML = '';
+          lastNumberDisplay.innerHTML = '';
+          let resultado = parseInt(firstNumber) + parseInt(lastNumber);
+          firstNumberDisplay.innerHTML = resultado;
+      }else if(simbolo === '-'){
+        sign.innerHTML = '';
+          lastNumberDisplay.innerHTML = '';
+          let resultado = parseInt(firstNumber) - parseInt(lastNumber);
+          firstNumberDisplay.innerHTML = resultado;
+      }else if(simbolo === 'x'){
+        sign.innerHTML = '';
+          lastNumberDisplay.innerHTML = '';
+          let resultado = parseInt(firstNumber) * parseInt(lastNumber);
+          firstNumberDisplay.innerHTML = resultado;
+      }else if(simbolo === '/'){
+        sign.innerHTML = '';
+          lastNumberDisplay.innerHTML = '';
+          let resultado = parseInt(firstNumber) / parseInt(lastNumber);
+          firstNumberDisplay.innerHTML = resultado;
+      }
+      })
+      
     }
 }
 items.forEach(item => item.addEventListener('click', ()=> handleNumber(item.innerHTML)))
