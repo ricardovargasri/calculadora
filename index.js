@@ -4,9 +4,10 @@ let screen = document.querySelector('.display');
 let firstNumberDisplay = document.querySelector('.firstNumber');
 let sign = document.querySelector('.sign');
 let lastNumberDisplay = document.querySelector('.lastNumber');
-let especials = document.querySelectorAll('.especiales');
 let arraiser = document.querySelector('#delete');
 let igual = document.querySelector('#equals');
+let reload = document.getElementById('reload');
+let delet = document.getElementById('delete');
 
 //variables
 let simbolo = '';
@@ -26,19 +27,37 @@ function handleOperator(operator){
   }; 
 }
 
-operators.forEach(operator => operator.addEventListener('click', ()=> handleOperator(operator.innerHTML)))
+reload.addEventListener('click', ()=> window.location.reload());
+
+operators.forEach(operator => operator.addEventListener('click', ()=> handleOperator(operator.innerHTML)));
+
+delet.addEventListener('click', ()=>{
+  if(!setOperator){
+    firstNumber =  firstNumber.slice(0, -1);
+    firstNumberDisplay.innerHTML = firstNumber;
+  } else{
+    lastNumber = lastNumber.slice(0, -1);
+    lastNumberDisplay.innerHTML = lastNumber;
+  };
+      
+    });
 
 function handleNumber(item){
   if(setOperator === false){
     firstNumber += item
     firstNumberDisplay.innerHTML = firstNumber;
+    //aqui
+    
     }
     else{
       lastNumber += item;
       lastNumberDisplay.innerHTML = lastNumber;
-      console.log(firstNumber)
-      console.log(typeof(simbolo));
-      console.log(lastNumber);
+      //aqui
+      
+    }
+
+
+
       igual.addEventListener('click', ()=>{
         if(simbolo === '+'){
           sign.innerHTML = '';
@@ -64,10 +83,8 @@ function handleNumber(item){
       })
       
     }
-}
+
 items.forEach(item => item.addEventListener('click', ()=> handleNumber(item.innerHTML)))
 
-
- 
 
 
